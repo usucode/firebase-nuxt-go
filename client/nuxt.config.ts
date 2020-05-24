@@ -28,10 +28,17 @@ export default {
    ** Global CSS
    */
   css: [],
+
+  /**
+   * Router
+   */
+  router: {
+    middleware: 'auth'
+  },
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/firebase'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -76,9 +83,27 @@ export default {
    ** Build configuration
    */
   build: {
+    babel: {
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: {
+              ie: '11'
+            },
+            useBuiltIns: 'usage',
+            corejs: 3
+          }
+        ]
+      ]
+    },
     /*
      ** You can extend webpack config here
      */
-    // extend(config, ctx) {}
+    extend(config: any) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
   }
 }

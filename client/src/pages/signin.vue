@@ -3,7 +3,7 @@
     <h2>Sign in</h2>
     <v-text-field type="text" label="email" v-model="email" />
     <v-text-field type="password" label="Password" v-model="password" />
-    <v-btn>Signin</v-btn>
+    <v-btn @click="signIn">Signin</v-btn>
     <p>
       You don't have an account?
       <nuxt-link to="/signup">create account now!!</nuxt-link>
@@ -12,11 +12,26 @@
 </template>
 
 <script>
+import { auth } from '~/plugins/firebase'
 export default {
   data: function() {
     return {
       email: '',
       password: ''
+    }
+  },
+  methods: {
+    signIn: function() {
+      auth.signInWithEmailAndPassword(this.email, this.password).then(
+        (res) => {
+          console.log('signin', res)
+          localStorage.setItem('jwt', res.user.qa)
+          this.$router.push('/')
+        },
+        (err) => {
+          alert(err.message)
+        }
+      )
     }
   }
 }

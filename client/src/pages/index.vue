@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div v-if="$store.getters['auth/isSignIn']" class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <v-btn @click="apiPublic">public</v-btn>
