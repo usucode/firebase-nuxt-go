@@ -12,7 +12,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Nuxt.js App'
     }
   },
   methods: {
