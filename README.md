@@ -1,4 +1,4 @@
-# Nuxt + Go 言語 + Firebase でセキュアなサイトの構築
+# Nuxt(フロント) + Go 言語(API) + Firebase でセキュアな SPA サイトの構築
 
 ## 参考
 
